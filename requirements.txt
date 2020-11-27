@@ -21,7 +21,6 @@ pickleshare==0.7.5
 prompt-toolkit==3.0.8
 Pygments==2.7.2
 python-dateutil==2.8.1
-pywin32==300
 pyzmq==20.0.0
 scikit-learn==0.20.2
 scipy==1.5.4
