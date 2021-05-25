@@ -13,16 +13,16 @@ import pickle #(pickling is a way to convert a python objects to character strea
 
 #we are instantiating a Flask object by passing __name__ argument to the Flask constructor.
 #The Flask constructor has one required argument which is the name of the application package
-app = Flask(__name__)
+application = Flask(__name__)
 model = pickle.load(open('model.pkl', 'rb'))
 
 #A Route is an act of binding a URL to a view function.
-@app.route('/')
+@application.route('/')
 def home():
     return render_template('index.html')# I set the main page using index.html
 
 # On submitting the form values using POST request to /predict, we get the predicted sales value
-@app.route('/predict',methods=['POST'])
+@application.route('/predict',methods=['POST'])
 def predict():
     float_features = [float(x) for x in request.form.values()]
     final_features = [np.array(float_features)]
@@ -36,7 +36,7 @@ def predict():
 #GET : to request data from the server.
 #POST : to submit data to be processed to the server.
 
-@app.route('/results',methods=['POST'])
+@application.route('/results',methods=['POST'])
 def results():
 
     data = request.get_json(force=True)
@@ -47,7 +47,7 @@ def results():
     return jsonify(output)
 
 if __name__ == "__main__":
-    app.run()
+    application.run()
 
 
 # In[ ]:
